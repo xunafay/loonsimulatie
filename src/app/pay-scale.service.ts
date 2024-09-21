@@ -35,10 +35,15 @@ export class PayScaleService {
     });
   }
 
+  /** Assumes csv data is in the format: name, scale, salary where scale is in ascending order
+    *
+    * @param data CSV document in string format
+    * @returns PayScale[]
+    */
   private parseCSV(data: string): PayScale[] {
     const rawRows = data.split('\n');
       rawRows.shift(); // remove the header
-      let rows = rawRows.map(row => {
+      const rows = rawRows.map(row => {
         const [name, scale, salary] = row.split(',');
         return { name, scale: parseInt(scale), salary: parseInt(salary) * this.INDEX_FACTOR };
       });
@@ -58,7 +63,7 @@ export class PayScaleService {
   }
 }
 
-export type PayScale = {
+export interface PayScale {
   name: string;
   salary: number[];
-};
+}

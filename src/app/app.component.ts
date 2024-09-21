@@ -21,7 +21,7 @@ export class AppComponent {
     return this.selectedCategory() ? scales.filter(scale => scale.name.startsWith(this.selectedCategory()!)) : scales;
   });
   trappen = computed(() => {
-    let scale = this.scales().find(scale => scale.name == this.selectedScale()?.name);
+    const scale = this.scales().find(scale => scale.name == this.selectedScale()?.name);
     return scale ? Array.from(Array(scale.salary.length).keys()) : [];
   });
 
