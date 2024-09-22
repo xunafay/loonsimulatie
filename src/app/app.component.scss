@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 24px;
+  }
+  flex-direction: column;
+  height: 100vh;
+  padding: 4px 16px;
+}
+
+form {
+  display: flex;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 24px;
+  }
+  flex-direction: column;
+  gap: 0;
+}

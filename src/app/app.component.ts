@@ -2,25 +2,21 @@ import { Component, computed, effect, model } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { PayScale, PayScaleService } from './pay-scale.service';
+import { PayBreakdownComponent } from './pay-breakdown/pay-breakdown.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatSelectModule],
+  imports: [RouterOutlet, MatSelectModule, PayBreakdownComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  selectedCategory = model<string | undefined>(undefined);
   selectedScale = model<PayScale | undefined>(undefined);
-  selectedTrap = model<number | undefined>(undefined);
+  selectedStep = model<number | undefined>(0);
 
-  categories = computed(() => this.payScaleService.categories());
-  scales = computed(() => {
-    const scales = this.payScaleService.scales();
-    return this.selectedCategory() ? scales.filter(scale => scale.name.startsWith(this.selectedCategory()!)) : scales;
-  });
-  trappen = computed(() => {
+  scales = computed(() => this.payScaleService.scales());
+  steps = computed(() => {
     const scale = this.scales().find(scale => scale.name == this.selectedScale()?.name);
     return scale ? Array.from(Array(scale.salary.length).keys()) : [];
   });
@@ -28,7 +24,7 @@ export class AppComponent {
   information = computed(() => {
     const scale = this.selectedScale();
     if (!scale) return '';
-    const trap = this.selectedTrap();
+    const trap = this.selectedStep();
     if (trap === undefined) return '';
     return `De ${scale.name} schaal, trap ${trap} heeft een salaris van €${(scale.salary[trap] / 12 / 100).toFixed(2)}`;
   });
@@ -37,10 +33,10 @@ export class AppComponent {
     private payScaleService: PayScaleService
   ) {
     effect(() => {
-      console.log('trappen:', this.trappen());
+      console.log('trappen:', this.steps());
       console.log('selectedScale:', this.selectedScale());
       console.log('scales:', this.scales());
-      console.log('selectedTrap:', this.selectedTrap());
+      console.log('selectedTrap:', this.selectedStep());
     });
   }
 }

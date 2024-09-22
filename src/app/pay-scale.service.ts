@@ -1,24 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Signal, WritableSignal, computed, signal } from '@angular/core';
+import { Injectable, Signal, WritableSignal, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PayScaleService {
-  private readonly INDEX_FACTOR = 2.0807;
-
   private _scales: WritableSignal<PayScale[]> = signal([]);
   readonly scales: Signal<PayScale[]> = this._scales.asReadonly();
-
-  /**
-   * Categories are the first letter of the pay scale names, sorted alphabetically.
-   */
-  categories: Signal<string[]> = computed(() => {
-    let categories = Array.from(new Set(this.scales().map(scale => scale.name.at(0))));
-    categories.sort();
-    categories = categories.filter(cat => cat); // remove falsy values (undefined, empty strings)
-    return categories as string[];
-  });
 
   constructor(private http: HttpClient) {
     this.getPayScales(); // pay scales are loaded on initialization once
@@ -42,7 +30,7 @@ export class PayScaleService {
       rawRows.shift(); // remove the header
       const rows = rawRows.map(row => {
         const [name, scale, salary] = row.split(',');
-        return { name, scale: parseInt(scale), salary: parseInt(salary) * this.INDEX_FACTOR };
+        return { name, scale: parseInt(scale), salary: parseInt(salary) };
       });
 
       // group rows by name

@@ -1,28 +1,31 @@
-<mat-form-field>
-  <mat-label>Niveau</mat-label>
-  <mat-select [(value)]="selectedCategory">
-    @for (category of categories(); track category) {
-    <mat-option [value]="category">{{category}}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Salarisschaal</mat-label>
-  <mat-select [(value)]="selectedScale">
-    @for (scale of scales(); track scale) {
-    <mat-option [value]="scale">{{scale.name}}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
+<div class="wrapper">
+  <div>
+    <h3>Salaris berekenen</h3>
+    <form>
+      <mat-form-field appearance="outline">
+        <mat-label>Salarisschaal</mat-label>
+        <mat-select [(value)]="selectedScale">
+          @for (scale of scales(); track scale) {
+          <mat-option [value]="scale">{{scale.name}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
 
-<mat-form-field>
-  <mat-label>Trap</mat-label>
-  <mat-select [(value)]="selectedTrap" [disabled]="!selectedScale()">
-    @for (trap of trappen(); track trap) {
-    <mat-option [value]="trap">{{trap}}</mat-option>
+      <mat-form-field appearance="outline">
+        <mat-label>Trap</mat-label>
+        <mat-select [(value)]="selectedStep" [disabled]="!selectedScale()">
+          @for (step of steps(); track step) {
+          <mat-option [value]="step">{{step}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="information">
+    @if (selectedStep() !== undefined && selectedScale() !== undefined) {
+      <app-pay-breakdown [scale]="selectedScale()!" [step]="selectedStep()!"></app-pay-breakdown>
+    } @else {
+      <p>Selecteer een salarisschaal en trap om de berekening te bekijken</p>
     }
-  </mat-select>
-</mat-form-field>
-<p>
-  {{ information() }}
-</p>
+  </div>
+</div>
