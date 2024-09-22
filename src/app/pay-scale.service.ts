@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Signal, WritableSignal, computed, effect, signal } from '@angular/core';
+import { Injectable, Signal, WritableSignal, computed, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +21,7 @@ export class PayScaleService {
   });
 
   constructor(private http: HttpClient) {
-    this.getPayScales();
-    effect(() => {
-      console.log('categories:', this.categories());
-    });
+    this.getPayScales(); // pay scales are loaded on initialization once
   }
 
   getPayScales(): void {
