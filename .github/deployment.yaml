@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: loonsimulatie
-        image: xunafay/loonsimulatie:latest
+        image: ghcr.io/xunafay/loonsimulatie:main
         imagePullPolicy: Always
         resources:
           limits:
@@ -30,6 +30,8 @@ spec:
         ports:
         - containerPort: 4000
           name: http
+      imagePullSecrets:
+      - name: dockerconfigjson-github-com
 ---
 apiVersion: v1
 kind: Service
