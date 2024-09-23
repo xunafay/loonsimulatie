@@ -1,4 +1,4 @@
-import { ApplicationConfig, DEFAULT_CURRENCY_CODE, InjectionToken, LOCALE_ID, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, DEFAULT_CURRENCY_CODE, InjectionToken, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -8,6 +8,7 @@ import { provideHttpClient } from '@angular/common/http';
 
 /**
  * Injection token for the pay index.
+ * This should preferably be from an api irl but for the sake of this example it's a global constant.
  */
 export const PAY_INDEX = new InjectionToken<number>('PAY_INDEX');
 
@@ -19,7 +20,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideHttpClient(),
     {provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR'},
-    {provide: LOCALE_ID, useValue: 'nl-BE'},
     {provide: PAY_INDEX, useValue: 2.0807}
   ]
 };

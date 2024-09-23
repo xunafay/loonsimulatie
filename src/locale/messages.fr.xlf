@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="nl" target-language="fr-be" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="7200126910662488331" datatype="html">
+        <source>Salaris berekenen</source>
+        <target>Calculer le salaire</target>
+        <note priority="1" from="description">calculate pay title</note>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2290386913626862343" datatype="html">
+        <source>Salarisschaal</source>
+        <target>Salaire Grade</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4060526963416065497" datatype="html">
+        <source>Trap</source>
+        <target>Niveau</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2479179798955576423" datatype="html">
+        <source>Selecteer een salarisschaal en trap om de berekening te bekijken</source>
+        <target>Sélectionnez une échelle salariale et un grade pour afficher le calcul</target>
+        <note priority="1" from="description">no pay scale selection placeholder</note>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">28,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7200275528421872413" datatype="html">
+        <source>Jaarbasis niet geïndexeerd:</source>
+        <target>Annuelle non indexée :</target>
+        <note priority="1" from="description">yearly unindexed pay</note>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pay-breakdown/pay-breakdown.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7162064923862293967" datatype="html">
+        <source>Jaarbasis:</source>
+        <target>Annuelle :</target>
+        <note priority="1" from="description">yearly pay</note>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pay-breakdown/pay-breakdown.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7237920797677359696" datatype="html">
+        <source>RSZ:</source>
+        <target>RSZ :</target>
+        <note priority="1" from="description">rsz</note>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pay-breakdown/pay-breakdown.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4437753315267004612" datatype="html">
+        <source>Bedrijfsvoorheffing:</source>
+        <target>Retenue à la source :</target>
+        <note priority="1" from="description">withoholding tax</note>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pay-breakdown/pay-breakdown.component.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7287801119022172604" datatype="html">
+        <source>Brutto maandelijks:</source>
+        <target>Brut mensuel :</target>
+        <note priority="1" from="description">monthly before tax</note>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pay-breakdown/pay-breakdown.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

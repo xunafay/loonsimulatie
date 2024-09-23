@@ -1,21 +1,21 @@
 <h2>Loon {{ scale().name}} trap {{ step() }} </h2>
 <div class="breakdown">
-  <span>Jaarbasis niet geïndexeerd:</span>
+  <span i18n="yearly unindexed pay">Jaarbasis niet geïndexeerd:</span>
   <span>{{ salary() / 100 | currency }}</span>
 </div>
 <div class="breakdown">
-  <span>Jaarbasis:</span>
+  <span i18n="yearly pay">Jaarbasis:</span>
   <span>{{ indexedSalary() / 100 | currency }}</span>
 </div>
 <div class="breakdown">
-  <span>RSZ:</span>
+  <span i18n="rsz">RSZ:</span>
   <span>{{ -rsz() / 100 | currency }}</span>
 </div>
 <div class="breakdown">
-  <span>Bedrijfsvoorheffing:</span>
+  <span i18n="withoholding tax">Bedrijfsvoorheffing:</span>
   <span>{{ -withholding() / 100 | currency }}</span>
 </div>
 <div class="breakdown">
-  <span>Brutto maandelijks:</span>
+  <span i18n="monthly before tax">Brutto maandelijks:</span>
   <span id="monthly">{{ monthlyPay() / 100 | currency }}</span>
 </div>

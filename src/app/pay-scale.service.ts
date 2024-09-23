@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Signal, WritableSignal, signal } from '@angular/core';
+import { Injectable, Signal, WritableSignal, afterNextRender, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +13,14 @@ export class PayScaleService {
   }
 
   getPayScales(): void {
-    this.http.get('/data.csv', {
-      responseType: 'text' // prevent the default JSON parsing attempt
-    }).subscribe(data => {
-      this._scales.set(this.parseCSV(data));
+    // currently throws an error on pre-rendering
+    // I believe it has to do with i18n
+    afterNextRender(() => {
+      this.http.get('data.csv', {
+        responseType: 'text' // prevent the default JSON parsing attempt
+      }).subscribe(data => {
+        this._scales.set(this.parseCSV(data));
+      });
     });
   }
 

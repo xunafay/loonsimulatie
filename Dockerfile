@@ -1,12 +1,13 @@
-FROM node:18-alpine AS build
+FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . ./
 RUN npm run build
 
-FROM node:18-alpine
+FROM node:20-alpine
 WORKDIR /app
 COPY --from=build /app/dist/loonsimulatie ./
-CMD node server/server.mjs
+RUN npm install express
+CMD node proxy-server.mjs
 EXPOSE 4000
