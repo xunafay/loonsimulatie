@@ -1,13 +1,14 @@
-import { Component, computed, effect, model } from '@angular/core';
+import { Component, computed, model } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { PayScale, PayScaleService } from './pay-scale.service';
 import { PayBreakdownComponent } from './pay-breakdown/pay-breakdown.component';
+import { FooterComponent } from './footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatSelectModule, PayBreakdownComponent],
+  imports: [RouterOutlet, MatSelectModule, PayBreakdownComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -32,11 +33,5 @@ export class AppComponent {
   constructor(
     private payScaleService: PayScaleService
   ) {
-    effect(() => {
-      console.log('trappen:', this.steps());
-      console.log('selectedScale:', this.selectedScale());
-      console.log('scales:', this.scales());
-      console.log('selectedTrap:', this.selectedStep());
-    });
   }
 }
