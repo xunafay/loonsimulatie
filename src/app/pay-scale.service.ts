@@ -13,8 +13,6 @@ export class PayScaleService {
   }
 
   getPayScales(): void {
-    // currently throws an error on pre-rendering
-    // I believe it has to do with i18n
     afterNextRender(() => {
       this.http.get('data.csv', {
         responseType: 'text' // prevent the default JSON parsing attempt
@@ -31,24 +29,24 @@ export class PayScaleService {
     */
   private parseCSV(data: string): PayScale[] {
     const rawRows = data.split('\n');
-      rawRows.shift(); // remove the header
-      const rows = rawRows.map(row => {
-        const [name, scale, salary] = row.split(',');
-        return { name, scale: parseInt(scale), salary: parseInt(salary) };
-      });
+    rawRows.shift(); // remove the header
+    const rows = rawRows.map(row => {
+      const [name, scale, salary] = row.split(',');
+      return { name, scale: parseInt(scale), salary: parseInt(salary) };
+    });
 
-      // group rows by name
-      const scales: PayScale[] = [];
-      for (const row of rows) {
-        const scale = scales.find(s => s.name === row.name);
-        if (scale) {
-          scale.salary.push(row.salary);
-        } else {
-          scales.push({ name: row.name, salary: [row.salary] });
-        }
+    // group rows by name
+    const scales: PayScale[] = [];
+    for (const row of rows) {
+      const scale = scales.find(s => s.name === row.name);
+      if (scale) {
+        scale.salary.push(row.salary);
+      } else {
+        scales.push({ name: row.name, salary: [row.salary] });
       }
+    }
 
-      return scales;
+    return scales;
   }
 }
 
